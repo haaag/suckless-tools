@@ -1,23 +1,23 @@
 //Modify this file to change what commands output to your statusbar, and recompile using the make command.
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
-    // {"",        "dwm-cpu-bars",         1,                  20},
-    // {"",        "dwm-mpc",              1,                  15},
-    {"",        "dwm-cpu.sh",              1,                  11},
-    {"",        "dwm-temppercore.sh",      3,                  12},
-    {"",        "dwm-memory.sh",           3,                  13},
-    {"",        "dwm-nettraf.sh",          1,                  16},
-    // {"",        "dwm-storage",         60,               21},
-    // {"",        "dwm-mail",            10,                  14},
-    // {"",        "dwm-bluetooth",        5,                  17},
-    // {"",        "dwm-weather",       3600,                  20},
-    {"",        "dwm-battery.sh",         60,                  15},
-    {"",        "dwm-pulse.sh",            0,                  10},
-    {"",        "dwm-date.sh",            3600,                19},
-    {"",        "dwm-time.sh",            30,                  25},
-    // {"",        "dwm-updates",       3600,                  22},
-    // {"",        "dwm-systray",          3,                  18},
-    // {"",        "dwm-systray-bash",     3,                  25},
+    {"",        "bar-cpu",                1,                  11},
+    {"",        "bar-temppercore",        3,                  12},
+    {"",        "bar-memory",             3,                  13},
+    {"",        "bar-nettraf",            1,                  16},
+    {"",        "bar-battery",            5,                  15},
+    {"",        "bar-pulse",              0,                  10},
+    {"",        "bar-date",               3600,                19},
+    {"",        "bar-time",               10,                  25},
+    
+    // {"",        "bar-storage",         60,               21},
+    // {"",        "bar-mail",            10,                  14},
+    // {"",        "bar-bluetooth",        5,                  17},
+    // {"",        "bar-weather.sh",       3600,                  20},
+
+    // {"",        "bar-mpc",              1,                  15},
+    // {"",        "bar-systray",          3,                  18},
+    // {"",        "bar-systray-bash",     3,                  25},
 };
 
 //Sets delimiter between status commands. NULL character ('\0') means no delimiter.

@@ -7,8 +7,8 @@ static const Block blocks[] = {
     {"",        "bar-nettraf",            1,                  16},
     {"",        "bar-battery",            5,                  15},
     {"",        "bar-pulse",              0,                  10},
-    {"",        "bar-date",               3600,                19},
-    {"",        "bar-time",               10,                  25},
+    {"",        "bar-date",               3600,               19},
+    {"",        "bar-time",               10,                 25},
     
     // {"",        "bar-storage",         60,               21},
     // {"",        "bar-mail",            10,                  14},

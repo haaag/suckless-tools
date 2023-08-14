@@ -1,6 +1,8 @@
-//Modify this file to change what commands output to your statusbar, and recompile using the make command.
+// Modify this file to change what commands output to your statusbar, 
+// and recompile using the make command.
 static const Block blocks[] = {
-	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
+/* Icon	        Command             Update Interval     Update Signal */
+    {"",        "bar-bluetooth",          60,                 12},
     {"",        "bar-cpu",                1,                  11},
     {"",        "bar-temppercore",        3,                  12},
     {"",        "bar-memory",             3,                  13},
@@ -20,10 +22,6 @@ static const Block blocks[] = {
     // {"",        "bar-systray-bash",     3,                  25},
 };
 
-//Sets delimiter between status commands. NULL character ('\0') means no delimiter.
+// Sets delimiter between status commands. 
+// NULL character ('\0') means no delimiter.
 static char *delim = "";
-
-// Have dwmblocks automatically recompile and run when you edit this file in
-// vim with the following line in your vimrc/init.vim:
-
-// autocmd BufWritePost ~/apps/suckless/dwmblocks/config.h !cd ~/apps/suckless/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid dwmblocks & }

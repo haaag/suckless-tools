@@ -1,0 +1,26 @@
+Date: Sun, 08 Oct 2023 00:00:00 +0200
+
+---
+diff --git a/slock/slock.c b/slock/slock.c
+index 3719fed..fa74d43 100644
+--- a/slock/slock.c
++++ b/slock/slock.c
+@@ -311,6 +311,7 @@ lockscreen(Display *dpy, struct xrandr *rr, int screen)
+ 	struct lock *lock;
+ 	XColor color, dummy;
+ 	XSetWindowAttributes wa;
++	XClassHint *classhint;
+ 	Cursor invisible;
+ 
+ 	if (dpy == NULL || screen < 0 || !(lock = malloc(sizeof(struct lock))))
+@@ -335,6 +336,10 @@ lockscreen(Display *dpy, struct xrandr *rr, int screen)
+ 	                          CopyFromParent,
+ 	                          DefaultVisual(dpy, lock->screen),
+ 	                          CWOverrideRedirect | CWBackPixel, &wa);
++	classhint = XAllocClassHint(); /* https://tronche.com/gui/x/xlib/ICC/client-to-window-manager/wm-class.html */
++	classhint->res_name = "slock";
++	classhint->res_class = "slock";
++	XSetClassHint(dpy,lock->win,classhint);
+ 	lock->pmap = XCreateBitmapFromData(dpy, lock->win, curs, 8, 8);
+ 	invisible = XCreatePixmapCursor(dpy, lock->pmap, lock->pmap,
+ 	                                &color, &color, 0, 0);

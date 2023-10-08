@@ -29,6 +29,8 @@
 
 char *argv0;
 
+/* global count to prevent repeated error messages */
+int count_error = 0;
 enum {
 	INIT,
 	INPUT,
@@ -89,6 +91,14 @@ writemessage(Display *dpy, Window win, int screen)
 	XColor color, dummy;
 	GC gc;
 	fontinfo = XLoadQueryFont(dpy, text_size);
+	if (fontinfo == NULL) {
+		if (count_error == 0) {
+			fprintf(stderr, "slock: Unable to load font \"%s\"\n", text_size);
+			fprintf(stderr, "slock: Try listing fonts with 'slock -f'\n");
+			count_error++;
+		}
+		return;
+	}
 	tab_size = 8 * XTextWidth(fontinfo, " ", 1);
 
 	XAllocNamedColor(dpy, DefaultColormap(dpy, screen),
@@ -311,6 +321,7 @@ lockscreen(Display *dpy, struct xrandr *rr, int screen)
 	struct lock *lock;
 	XColor color, dummy;
 	XSetWindowAttributes wa;
+	XClassHint *classhint;
 	Cursor invisible;
 
 	if (dpy == NULL || screen < 0 || !(lock = malloc(sizeof(struct lock))))
@@ -335,6 +346,10 @@ lockscreen(Display *dpy, struct xrandr *rr, int screen)
 	                          CopyFromParent,
 	                          DefaultVisual(dpy, lock->screen),
 	                          CWOverrideRedirect | CWBackPixel, &wa);
+	classhint = XAllocClassHint(); /* https://tronche.com/gui/x/xlib/ICC/client-to-window-manager/wm-class.html */
+	classhint->res_name = "slock";
+	classhint->res_class = "slock";
+	XSetClassHint(dpy,lock->win,classhint);
 	lock->pmap = XCreateBitmapFromData(dpy, lock->win, curs, 8, 8);
 	invisible = XCreatePixmapCursor(dpy, lock->pmap, lock->pmap,
 	                                &color, &color, 0, 0);

@@ -1,7 +1,6 @@
-// Modify this file to change what commands output to your statusbar,
-// and recompile using the make command.
+//Modify this file to change what commands output to your statusbar, and recompile using the make command.
 static const Block blocks[] = {
-/* Icon	        Command                 Update Interval     Update Signal */
+	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
     {"",        "bar-bluetooth",            5,                  12},
     {"",        "bar-cpu",                  1,                  11},
     {"",        "bar-temppercore",          3,                  12},
@@ -11,8 +10,10 @@ static const Block blocks[] = {
     {"",        "bar-date",                 3600,               19},
     {"",        "bar-time",                 10,                 25},
     {"",        "bar-bat",                  10,                 15},
+    {"",        "bar-sys",                   5,                 17},
 };
 
 // Sets delimiter between status commands.
-// NULL character ('\0') means no delimiter.
-static char *delim = "";
+// NULL character ('\0') means no delimeter.
+static char *delim = " ";
+static unsigned int delimLen = 5;
